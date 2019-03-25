@@ -84,7 +84,7 @@ import { Tasks } from '../Tasks';
           <td>{{Task.End_Date}}{{Flag}}</td>
           <th scope="col">   </th>
           <td><button type="button" class="btn btn-success" [disabled]="Task.Flag" (click)="edit(Task._id)">Edit</button></td>
-          <td><button type="button" class="btn btn-success" [disabled]="Task.Flag" (click)="end(Task._id,Task.Task,Task.Priority,Task.Parent_Task,Task.Start_Date,Task.End_Date)"  onClick="window.location.reload();">End Task</button></td>
+          <td><button type="button" class="btn btn-success" [disabled]="Task.Flag" (click)="end(Task._id,Task.Task,Task.Priority,Task.Parent_Task,Task.Start_Date,Task.End_Date)">End Task</button></td>
           </tr>
           </tbody>
           </table>
@@ -108,7 +108,7 @@ message=" ";
 
   ngOnInit(){
     
-      this.http.get('http://localhost:5001/task')
+      this.http.get('http://ec2-3-17-70-247.us-east-2.compute.amazonaws.com:5001/task')
       .toPromise()
       .then(res=>{
       console.log(res);
@@ -119,7 +119,7 @@ message=" ";
 
     edit(Task_ID:string){
         
-                this.http.get('http://localhost:5001/task/'+Task_ID)
+                this.http.get('http://ec2-3-17-70-247.us-east-2.compute.amazonaws.com:5001/task/'+Task_ID)
                 .toPromise()
                 .then(res=>{
                 console.log(res[0].Flag);
@@ -138,7 +138,7 @@ message=" ";
               }
         end(Task_ID:string,task:string,priority:string,parent:string,startdate:string,enddate:string){
             
-                this.http.put('http://localhost:5001/endtask/'+Task_ID,
+                this.http.put('http://ec2-3-17-70-247.us-east-2.compute.amazonaws.com:5001/endtask/'+Task_ID,
                 {task:task,priority:priority,parent_task:parent,
                     start_date:startdate,end_date:enddate})
                 .toPromise()

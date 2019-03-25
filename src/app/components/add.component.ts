@@ -75,7 +75,7 @@ Message=' ';
     addtask(task:string,
         priority:string,parent:string,startdate:string,enddate:string,Flag:Boolean){
         
-        this.http.post('http://localhost:5001/tasks',
+        this.http.post('http://ec2-3-17-70-247.us-east-2.compute.amazonaws.com:5001/tasks',
         {task:task,priority:priority,parent_task:parent,
             start_date:startdate,end_date:enddate,Flag:Flag})
         .toPromise()

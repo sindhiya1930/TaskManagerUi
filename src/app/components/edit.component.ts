@@ -87,7 +87,7 @@ ngOnInit()
     {
 
         console.log(priority)
-        this.http.put('http://localhost:5001/edittasks/'+task_id,
+        this.http.put('http://ec2-3-17-70-247.us-east-2.compute.amazonaws.com:5001/edittasks/'+task_id,
         {task:task,priority:priority,parent_task:parent,
         start_date:startdate,end_date:enddate})
         .toPromise()
